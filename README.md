@@ -1,2 +1,3 @@
-# tricks
-Peitt tricks simples fait purement en HTML-CSS-JS sans utilisation de librairies
+# Tricks
+
+Petit tricks simples faits purement en HTML-CSS-JS sans utilisation de librairies externes.
