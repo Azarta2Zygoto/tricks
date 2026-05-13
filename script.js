@@ -1,4 +1,4 @@
-function onChangeNumberColonnes(event) {
+function onChangeNumberColonnes(value) {
   const flip = document.getElementById("flip");
   // Supprimer tous les éléments enfants de la div "flip"
   while (flip.firstChild) {
@@ -6,7 +6,7 @@ function onChangeNumberColonnes(event) {
   }
 
   // Récupérer le nombre de colonnes et de lignes à partir des champs d'entrée
-  const colonneNumber = parseInt(event.target.value);
+  const colonneNumber = parseInt(value);
   const ligneNumber = parseInt(document.getElementById("ligne").value);
 
   elementSize = getElementSize(colonneNumber, ligneNumber);
@@ -31,7 +31,7 @@ function onChangeNumberColonnes(event) {
   }
 }
 
-function onChangeNumberLignes(event) {
+function onChangeNumberLignes(value) {
   const flip = document.getElementById("flip");
   // Supprimer tous les éléments enfants de la div "flip"
   while (flip.firstChild) {
@@ -40,7 +40,7 @@ function onChangeNumberLignes(event) {
 
   // Récupérer le nombre de colonnes et de lignes à partir des champs d'entrée
   const colonneNumber = parseInt(document.getElementById("colonne").value);
-  const ligneNumber = parseInt(event.target.value);
+  const ligneNumber = parseInt(value);
 
   elementSize = getElementSize(colonneNumber, ligneNumber);
 
@@ -83,3 +83,12 @@ function onClickFlip(sign) {
     element.style.transform = `rotate(${-newValue}deg)`;
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  onChangeNumberColonnes(document.getElementById("colonne").value);
+});
+
+window.addEventListener("resize", () => {
+  console.log("resize");
+  onChangeNumberColonnes(document.getElementById("colonne").value);
+});

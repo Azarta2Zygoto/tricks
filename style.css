@@ -126,8 +126,8 @@ footer {
   align-items: center;
   width: 600px;
   height: 600px;
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 80vw;
+  max-height: 80vh;
   margin-bottom: min(8%, 60px);
 }
 

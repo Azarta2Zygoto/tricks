@@ -9,7 +9,7 @@
     <header>
       <span></span>
       <p class="header-title">I love tricks</p>
-      <a href="https://azarta2zygoto.github.io/tricks">
+      <a href="https://github.com/Azarta2Zygoto/tricks">
         <img src="../assets/github.svg" alt="GitHub logo" class="header-logo" />
       </a>
     </header>
@@ -22,7 +22,7 @@
             type="number"
             id="colonne"
             class="input number"
-            onchange="onChangeNumberColonnes(event)"
+            onchange="onChangeNumberColonnes(event.target.value)"
             value="4"
             min="1"
           />
@@ -33,7 +33,7 @@
             type="number"
             id="ligne"
             class="input"
-            onchange="onChangeNumberLignes(event)"
+            onchange="onChangeNumberLignes(event.target.value)"
             value="5"
             min="1"
           />
@@ -58,37 +58,7 @@
       </div>
       <div class="wrapper-flip">
         <div class="flip" style="transform: rotate(0)" data-value="0" id="flip">
-          <div class="element-row">
-            <div class="element">1</div>
-            <div class="element">2</div>
-            <div class="element">3</div>
-            <div class="element">4</div>
-          </div>
-          <div class="element-row">
-            <div class="element">5</div>
-            <div class="element">6</div>
-            <div class="element">7</div>
-            <div class="element">8</div>
-          </div>
-          <div class="element-row">
-            <div class="element">9</div>
-            <div class="element">10</div>
-            <div class="element">11</div>
-            <div class="element">12</div>
-          </div>
-          <div class="element-row">
-            <div class="element">13</div>
-            <div class="element">14</div>
-            <div class="element">15</div>
-            <div class="element">16</div>
-          </div>
-          <div class="element-row">
-            <div class="element">17</div>
-            <div class="element">18</div>
-            <div class="element">19</div>
-            <div class="element">20</div>
-          </div>
-        </div>
+          <!-- Les éléments seront générés ici par JavaScript -->
       </div>
     </main>
   </body>
