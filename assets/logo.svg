@@ -1,0 +1,19 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    height="24"
+    width="24"
+    fill="black"
+>
+    <circle r="7" cx="12" cy="12" fill="transparent" stroke="currentColor" stroke-width="3"/>
+    <circle r="2" cx="12" cy="12" />
+    <circle r="0.8" cx="12" cy="12" fill="white"/>
+    <line x1="5" y1="5" x2="10" y2="10" style="stroke:yellow;stroke-width:2" />
+    <line x1="19" y1="19" x2="14" y2="14" style="stroke:blue;stroke-width:2" />
+    <line x1="5" y1="19" x2="10" y2="14" style="stroke:green;stroke-width:2" />
+    <line x1="19" y1="5" x2="14" y2="10" style="stroke:red;stroke-width:2" />
+    <line x1="12" y1="7" x2="12" y2="9.5" style="stroke:orange;stroke-width:1" />
+    <line x1="7" y1="12" x2="9.5" y2="12" style="stroke:#f2ffcf;stroke-width:1" />
+    <line x1="12" y1="14.5" x2="12" y2="17" style="stroke:#097782;stroke-width:1" />
+    <line x1="14.5" y1="12" x2="17" y2="12" style="stroke:purple;stroke-width:1" />
+</svg>
