@@ -1,71 +1,44 @@
 function onChangeNumberColonnes(value) {
-  const flip = document.getElementById("flip");
-  // Supprimer tous les éléments enfants de la div "flip"
-  while (flip.firstChild) {
-    flip.removeChild(flip.firstChild);
-  }
-
-  // Récupérer le nombre de colonnes et de lignes à partir des champs d'entrée
   const colonneNumber = parseInt(value);
   const ligneNumber = parseInt(document.getElementById("ligne").value);
-
-  elementSize = getElementSize(colonneNumber, ligneNumber);
-
-  // Récupérer le flip des éléments
-  const currentValue = parseInt(flip.dataset.value);
-
-  // Générer les éléments en fonction du nombre de colonnes et de lignes
-  for (let i = 0; i < ligneNumber; i++) {
-    const elementRow = document.createElement("div");
-    elementRow.classList.add("element-row");
-    for (let j = 0; j < colonneNumber; j++) {
-      const element = document.createElement("div");
-      element.classList.add("element");
-      element.style.width = `${elementSize - 10}px`;
-      element.style.height = `${elementSize - 10}px`;
-      element.style.transform = `rotate(${-currentValue}deg)`;
-      element.textContent = i * colonneNumber + j + 1;
-      elementRow.appendChild(element);
-    }
-    flip.appendChild(elementRow);
-  }
+  changeNumberElements(colonneNumber, ligneNumber);
 }
-
 function onChangeNumberLignes(value) {
-  const flip = document.getElementById("flip");
-  // Supprimer tous les éléments enfants de la div "flip"
-  while (flip.firstChild) {
-    flip.removeChild(flip.firstChild);
-  }
-
-  // Récupérer le nombre de colonnes et de lignes à partir des champs d'entrée
   const colonneNumber = parseInt(document.getElementById("colonne").value);
   const ligneNumber = parseInt(value);
+  changeNumberElements(colonneNumber, ligneNumber);
+}
+function changeNumberElements(colonneNumber, ligneNumber) {
+  const flip = document.getElementById("flip");
 
-  elementSize = getElementSize(colonneNumber, ligneNumber);
+  const nbElements = colonneNumber * ligneNumber;
 
-  // Récupérer le flip des éléments
-  const currentValue = parseInt(flip.dataset.value);
-
-  // Générer les éléments en fonction du nombre de colonnes et de lignes
-  for (let i = 0; i < ligneNumber; i++) {
-    const elementRow = document.createElement("div");
-    elementRow.classList.add("element-row");
-    for (let j = 0; j < colonneNumber; j++) {
-      const element = document.createElement("div");
-      element.classList.add("element");
-      element.style.width = `${elementSize - 10}px`;
-      element.style.height = `${elementSize - 10}px`;
-      element.style.transform = `rotate(${-currentValue}deg)`;
-      element.textContent = i * colonneNumber + j + 1;
-      elementRow.appendChild(element);
-    }
-    flip.appendChild(elementRow);
+  while (flip.childElementCount > nbElements) {
+    flip.removeChild(flip.lastChild);
   }
+
+  const currentValue = parseInt(flip.dataset.value);
+  for (let i = flip.childElementCount; i < nbElements; i++) {
+    const element = document.createElement("div");
+    element.classList.add("element");
+    element.style.transform = `rotate(${-currentValue}deg)`;
+    element.textContent = i + 1;
+    flip.appendChild(element);
+  }
+  resizeElements(flip, colonneNumber, ligneNumber);
 }
 
-function getElementSize(colonneNumber, ligneNumber) {
-  const flip = document.getElementById("flip");
+function resizeElements(flip, colonneNumber, ligneNumber) {
+  const elements = document.querySelectorAll(".element");
+  elementSize = getElementSize(flip, colonneNumber, ligneNumber);
+  flip.style.gridTemplateColumns = `repeat(${colonneNumber}, ${elementSize}px)`;
+  elements.forEach((element) => {
+    element.style.width = `${elementSize - 10}px`;
+    element.style.height = `${elementSize - 10}px`;
+  });
+}
+
+function getElementSize(flip, colonneNumber, ligneNumber) {
   const flipWidth = flip.clientWidth;
   const flipHeight = flip.clientHeight;
   const minimum = Math.min(flipWidth, flipHeight);
@@ -89,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("resize", () => {
-  console.log("resize");
-  onChangeNumberColonnes(document.getElementById("colonne").value);
+  flip = document.getElementById("flip");
+  const colonneNumber = parseInt(document.getElementById("colonne").value);
+  const ligneNumber = parseInt(document.getElementById("ligne").value);
+  resizeElements(flip, colonneNumber, ligneNumber);
 });
